@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Page</title>
+  <link rel="stylesheet" type="text/css" href="SRC/style/style.css" />
+  <link rel="icon" href="Assets/favicons/favicon.png" type="image/png" sizes="32x32" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="index.html" class="logo"><span class="main-icon"></span><span>Jayesh</span></a>
+
+    <div class="navbar">
+      <a href="index.html" class="active">Home</a>
+      <a href="SRC/pages/skills.html">Skills</a>
+      <a href="SRC/pages/education.html">Education</a>
+      <a href="SRC/pages/career.html">Career</a>
+      <a href="SRC/pages/projects.html">Projects</a>
+    </div>
+
+    <!-- Theme Toggle Icon Button -->
+    <div class="theme-toggle">
+     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+    </div>
+    
+
+    <div class="main">
+      <a href="SRC/pages/contact.html" class="user main-items"><i class="fas fa-envelope cm-icon"></i>Contact Me</a>
+      <div class="main-items menu-icon-container" id="menu-icon-js">
+        <div class="bx bx-menu" id="menu-icon"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="page">
+    <section class="about" id="about">
+      <div class="about-content">
+        <div class="column right">
+          <img src="Assets/photo.jpg" alt="Jayesh's photo">
+        </div>
+        <div class="column left">
+          <div class="text">I'm Jayesh and I'm <span id="typed" class="iAm"></span></div>
+          <p>
+            Machine Learning Engineer passionate about solving real-world problems through AI.
+            I blend logic with creativity to turn messy data into clear, actionable insights.
+            For me, it’s not just about prediction — it’s about building solutions that matter.
+          </p>
+          <div class="buttons">
+            <a href="Assets/resume/Jayesh_Patil_Resume.pdf" download>
+              <i class="fa fa-download"></i> Download CV
+            </a>
+
+            <a href="SRC/pages/contact.html" class="cm-button">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="left">
+        &copy; 2025 • Jayesh Patil • All Rights Reserved
+      </div>
+      <div class="right">
+        <div class="social"><a href="https://www.instagram.com/_jayesh__patil___" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
+        <div class="social"><a href="https://www.linkedin.com/in/jayesh-patil-293389247/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
+        <div class="social"><a href="https://github.com/Darkvally46" target="_blank"><i class="fa-brands fa-github"></i></a></div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="nav-touch-close" id="nav-tc-js"></div>
+
+  <!-- JS -->
+  <script src="SRC/script/script.js"></script>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#typed', {
+      strings: ['a Data Scientist', 'a Data Analyst', 'an AI/ML Engineer'],
+      typeSpeed: 55,
+      backSpeed: 40,
+      loop: true
+    });
+  </script>
+
+  <script>
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const icon = themeBtn.querySelector('i');
+
+    // Load saved theme on page load
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-theme');
+      icon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    // Toggle theme on click
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      icon.classList.toggle('fa-sun', isDark);
+      icon.classList.toggle('fa-moon', !isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Me</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="icon" href="/Assets/favicons/favicon.png" type="image/png" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <a href="../../index.html" class="logo"><span class="main-icon"></span><span>Jayesh</span></a>
+
+        <div class="navbar">
+            <a href="../../index.html">Home</a>
+            <a href="./skills.html">skills</a>
+            <a href="./education.html">Education</a>
+            <a href="./career.html">Career</a>
+            <a href="./projects.html">Projects</a>
+        </div>
+
+        <div class="theme-toggle">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+        </div>
+
+        <div class="main">
+            <a href="contact.html" class="user main-items active"><i class="fas fa-envelope cm-icon"></i>Contact Me</a>
+            <div class="main-items menu-icon-container" id="menu-icon-js">
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page">
+        <main class="contact-main">
+            <div class="contact-full">
+                <div class="contact-section">
+                    <div class="cs-top mobile-show">
+                        <h1>Reach Me</h1>
+                        <div class="border-line"></div>
+                    </div>
+                    <div class="cs-item email">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div class="text">
+                            <div class="placeHolder">E-mail</div>
+                            <div class="info">jayeshpatil683289@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="cs-item number">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <div class="text">
+                            <div class="placeHolder">Phone</div>
+                            <div class="info">+91 8999847556</div>
+                        </div>
+                    </div>
+                    <div class="cs-item address">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="text">
+                            <div class="placeHolder">Address</div>
+                            <div class="info">Pune, Maharashtra</div>
+                        </div>
+                    </div>
+                </div>
+                <section class="contact-form">
+                    <h1>Contact Me</h1>
+                    <div class="border-line"></div>
+                    <div class="contact-submit-after">
+                        <div class="box">
+                            <i class="fa-solid fa-circle-check csa-icon"></i>
+                            <div class="csa-text">Message sent successfully</div>
+                            <div class="csa-ok">OK</div>
+                        </div>
+                    </div>
+                    <form id="contact-form" class="form-section" novalidate>
+                        <div class="form-group name-section">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <div class="error"><i class="fa-solid fa-circle-xmark error-icon"></i>Please fill out all the fields</div>
+                        <div class="email-error"><i class="fa-solid fa-circle-xmark error-icon"></i>Email address is not valid</div>
+                        <button type="submit" id="contact-submit" class="contact-button">
+                            <div class="contact-load">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="submit-text">
+                                Submit
+                            </div>
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="left">
+                &copy; 2025 • Jayesh Patil • All Rights Reserved
+            </div>
+            <div class="right">
+                <div class="social"><a href="https://www.instagram.com/_jayesh__patil___" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
+                <div class="social"><a href="https://www.linkedin.com/in/jayesh-patil-293389247/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
+                <div class="social"><a href="https://github.com/Darkvally46" target="_blank"><i class="fa-brands fa-github"></i></a></div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="nav-touch-close" id="nav-tc-js"></div>
+
+    <!-- Updated Script Section -->
+    <script type="text/javascript" src="../script/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your User ID
+        (function() {
+            emailjs.init("LbaGKvZebPgxzJ64v"); // Replace with your actual EmailJS User ID
+        })();
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Validate form
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            // Clear previous errors
+            document.querySelector('.error').classList.remove('error-show');
+            document.querySelector('.email-error').classList.remove('error-show');
+            
+            // Validate fields
+            if (!name || !email || !message) {
+                document.querySelector('.error').classList.add('error-show');
+                return;
+            }
+            
+            if (!emailRegex.test(email)) {
+                document.querySelector('.email-error').classList.add('error-show');
+                return;
+            }
+            
+            // Show loading state
+            document.querySelector('.contact-button').classList.add('loading');
+            document.querySelector('.contact-load').classList.add('show');
+            document.querySelector('.submit-text').classList.add('hide');
+            
+            // Send email
+            emailjs.send("service_6r9e90i", "template_8zk90pl", {
+                name: name,
+                email: email,
+                message: message,
+                time: new Date().toLocaleString()
+            })
+            .then(function() {
+                // Show success message
+                document.querySelector('.contact-submit-after').classList.add('show');
+                document.querySelector('.form-section').classList.add('hide');
+                document.querySelector('.contact-section').classList.add('csa-cs');
+                document.querySelector('.contact-form').classList.add('csa-cf');
+                
+                // Reset form
+                document.getElementById('contact-form').reset();
+            })
+            .catch(function(error) {
+                console.error('Failed to send email:', error);
+                alert('Failed to send message. Please try again later.');
+            })
+            .finally(function() {
+                // Reset loading state
+                document.querySelector('.contact-button').classList.remove('loading');
+                document.querySelector('.contact-load').classList.remove('show');
+                document.querySelector('.submit-text').classList.remove('hide');
+            });
+        });
+        
+        // Handle OK button click
+        document.querySelector('.csa-ok').addEventListener('click', function() {
+            document.querySelector('.contact-submit-after').classList.remove('show');
+            document.querySelector('.form-section').classList.remove('hide');
+            document.querySelector('.contact-section').classList.remove('csa-cs');
+            document.querySelector('.contact-form').classList.remove('csa-cf');
+        });
+    </script>
+</body>
+</html>
